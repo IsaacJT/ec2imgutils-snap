@@ -10,6 +10,10 @@ website: https://github.com/SUSE-Enceladus/ec2imgutils
 issues: https://github.com/IsaacJT/ec2imgutils-snap/issues
 contact: isaac.true@canonical.com
 
+architectures:
+  - build-for: arm64
+  - build-for: amd64
+
 parts:
   ec2imgutils:
     source: https://github.com/SUSE-Enceladus/ec2imgutils.git
