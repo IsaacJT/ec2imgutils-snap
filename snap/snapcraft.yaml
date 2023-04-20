@@ -1,0 +1,48 @@
+name: itrue-ec2imgutils
+base: core22
+summary: A collection of utilities for image management in AWS EC2
+description: |
+  An unoffical snap for the ec2imgutils package.
+confinement: strict
+adopt-info: ec2imgutils
+license: GPL-3.0
+website: https://github.com/SUSE-Enceladus/ec2imgutils
+issues: https://github.com/IsaacJT/ec2imgutils-snap/issues
+contact: isaac.true@canonical.com
+
+parts:
+  ec2imgutils:
+    source: https://github.com/SUSE-Enceladus/ec2imgutils.git
+    plugin: python
+    override-build: |
+      craftctl default
+      craftctl set grade="stable"
+      # Get version number from package dist-info folder
+      craftctl set version="$(basename ${CRAFT_PART_INSTALL}/lib/python3*/site-packages/ec2imgutils-*.dist-info | cut -f 2 -d- | rev | cut -d . -f2- | rev)"
+
+apps:
+  ec2deprecateimg:
+    command: bin/ec2deprecateimg
+    plugs:
+      - home
+      - network
+  ec2listimg:
+    command: bin/ec2listimg
+    plugs:
+      - home
+      - network
+  ec2publishimg:
+    command: bin/ec2publishimg
+    plugs:
+      - home
+      - network
+  ec2removeimg:
+    command: bin/ec2removeimg
+    plugs:
+      - home
+      - network
+  ec2uploadimg:
+    command: bin/ec2uploadimg
+    plugs:
+      - home
+      - network
