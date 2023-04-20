@@ -24,25 +24,22 @@ apps:
   ec2deprecateimg:
     command: bin/ec2deprecateimg
     plugs:
-      - home
       - network
   ec2listimg:
     command: bin/ec2listimg
     plugs:
-      - home
       - network
   ec2publishimg:
     command: bin/ec2publishimg
     plugs:
-      - home
       - network
   ec2removeimg:
     command: bin/ec2removeimg
     plugs:
-      - home
       - network
   ec2uploadimg:
     command: bin/ec2uploadimg
     plugs:
       - home
       - network
+      - removable-media
